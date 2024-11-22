@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Days to Go for My Favourite Aja</title>
+    <style>
+        /* Reset basic styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            box-sizing: border-box;
+            overflow: hidden;
+            background: linear-gradient(to right, #FF80AB, #FF4081); /* Vibrant pink gradient */
+            color: #FFFFFF; /* White text to stand out */
+        }
+
+        /* Main container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            line-height: 1.2;
+            color: #FFEB3B; /* Bright yellow for high energy */
+            animation: bounceIn 1s ease-in-out;
+        }
+
+        .countdown {
+            font-size: 2.5rem;
+            margin: 20px 0;
+            color: #FFF;
+        }
+
+        /* Animation for bouncing header */
+        @keyframes bounceIn {
+            0% { transform: translateY(-100px); opacity: 0; }
+            60% { transform: translateY(30px); opacity: 1; }
+            100% { transform: translateY(0); }
+        }
+
+        /* Confetti emojis */
+        .confetti {
+            position: absolute;
+            font-size: 2rem;
+            pointer-events: none;
+            animation: fall 5s linear infinite;
+            z-index: 9999;
+        }
+
+        /* Animation for falling confetti */
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Emoji for kisses */
+        .kiss {
+            position: absolute;
+            font-size: 2rem;
+            animation: kissAnimation 2s ease-in-out infinite;
+            z-index: 10000;
+        }
+
+        @keyframes kissAnimation {
+            0% { opacity: 1; transform: translateY(-30px); }
+            50% { opacity: 0.5; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(-30px); }
+        }
+
+        /* Sensuous words floating animation */
+        .sensuous-word {
+            position: absolute;
+            font-size: 2rem;
+            color: #FFEB3B; /* Yellow for emotional warmth */
+            font-weight: bold;
+            animation: sensuousWords 8s linear infinite;
+            text-transform: capitalize;
+        }
+
+        @keyframes sensuousWords {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-120vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>5 Days to Go for My Favourite Aja of All Time!</h1>
+        <div class="countdown">Time Left: <span id="countdown-timer"></span></div>
+    </div>
+
+    <script>
+        // Countdown Timer
+        const countdownElement = document.getElementById('countdown-timer');
+        const targetDate = new Date(); // Set target date (4 days from now)
+        targetDate.setDate(targetDate.getDate() + 5);
+
+        function updateCountdown() {
+            const now = new Date();
+            const timeDifference = targetDate - now;
+            
+            // Calculate days, hours, minutes, and seconds
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            // Update the countdown element
+            countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            // Repeat every second
+            setTimeout(updateCountdown, 1000);
+        }
+
+        // Call the countdown update function
+        updateCountdown();
+
+        // Emoji confetti setup (including kisses)
+        const emojis = ['👠', '🦮', '🔗', '💋', '💄', '🥂']; // High Heel, Dog, Leash, Kiss, Lipstick, Cheers emojis
+        const container = document.body;
+
+        function createConfetti() {
+            const emoji = document.createElement('div');
+            emoji.classList.add('confetti');
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            // Random start position
+            emoji.style.left = Math.random() * 100 + 'vw';
+            emoji.style.animationDuration = Math.random() * 3 + 5 + 's'; // Random fall duration
+            
+            container.appendChild(emoji);
+
+            // Remove the emoji after animation ends
+            setTimeout(() => {
+                emoji.remove();
+            }, 8000);
+        }
+
+        // Create multiple confetti at random intervals
+        setInterval(createConfetti, 300);
+
+        // Kiss animation (loving kisses that float upwards)
+        function createKisses() {
+            const kiss = document.createElement('div');
+            kiss.classList.add('kiss');
+            kiss.textContent = '💋';
+
+            kiss.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+            kiss.style.top = Math.random() * 100 + 'vh'; // Random vertical position
+
+            container.appendChild(kiss);
+
+            // Remove the kiss after animation ends
+            setTimeout(() => {
+                kiss.remove();
+            }, 3000);
+        }
+
+        // Create kisses at random intervals
+        setInterval(createKisses, 200);
+
+        // Sensuous words animation (psychologically impactful)
+        const sensuousWords = [
+            "You Belong to Me", "Surrender to Me", "My Sweet Submissive", 
+            "Trust in Me", "Kiss Me", "You are Mine", "Give Yourself to Me", 
+            "Let Go, Darling", "My Beautiful Sub", "Forever Yours"
+        ];
+
+        function createSensuousWords() {
+            const word = document.createElement('div');
+            word.classList.add('sensuous-word');
+            word.textContent = sensuousWords[Math.floor(Math.random() * sensuousWords.length)];
+            
+            // Random starting position
+            word.style.left = Math.random() * 100 + 'vw';
+            word.style.top = Math.random() * 100 + 'vh';
+
+            container.appendChild(word);
+
+            // Remove the word after animation ends
+            setTimeout(() => {
+                word.remove();
+            }, 8000);
+        }
+
+        // Create sensuous words at random intervals
+        setInterval(createSensuousWords, 800);
+    </script>
+</body>
+</html>
