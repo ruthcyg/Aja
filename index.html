@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -110,7 +110,7 @@
         // Countdown Timer
         const countdownElement = document.getElementById('countdown-timer');
         const targetDate = new Date(); // Set target date (4 days from now)
-        targetDate.setDate(targetDate.getDate() + 5);
+        targetDate.setDate(targetDate.getDate() + 4);
 
         function updateCountdown() {
             const now = new Date();
@@ -202,6 +202,259 @@
 
         // Create sensuous words at random intervals
         setInterval(createSensuousWords, 800);
+    </script>
+</body>
+</html>-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to My Favourite Aja's Birthday</title>
+    <style>
+        /* Reset basic styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            box-sizing: border-box;
+            overflow: hidden;
+            background: linear-gradient(135deg, #6D83F2, #E82A7C, #3CF5E8, #FFD700); /* Gradient background with futuristic colors */
+            background-size: 300% 300%; /* Create smooth movement effect */
+            animation: gradientBackground 15s ease infinite; /* Smooth gradient transition */
+            color: #FFFFFF; /* White text to contrast with vibrant backgrounds */
+        }
+
+        /* Keyframe for animated background */
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Main container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            line-height: 1.2;
+            animation: colorChange 10s ease-in-out infinite; /* Apply color-changing animation */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Soft glow effect */
+        }
+
+        /* Animation for color change */
+        @keyframes colorChange {
+            0% { color: #FFD700; } /* Gold */
+            20% { color: #E82A7C; } /* Magenta */
+            40% { color: #00FFC6; } /* Teal */
+            60% { color: #6D83F2; } /* Blue-Violet */
+            80% { color: #3CF5E8; } /* Aqua */
+            100% { color: #FFD700; } /* Back to Gold */
+        }
+
+        .countdown {
+            font-size: 2.5rem;
+            margin: 20px 0;
+            color: #FFF;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Animation for bouncing header */
+        @keyframes bounceIn {
+            0% { transform: translateY(-100px); opacity: 0; }
+            60% { transform: translateY(30px); opacity: 1; }
+            100% { transform: translateY(0); }
+        }
+
+        /* Confetti emojis */
+        .confetti {
+            position: absolute;
+            font-size: 2rem;
+            pointer-events: none;
+            animation: fall 5s linear infinite;
+            z-index: 9999;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); /* Add a sleek glow to emojis */
+        }
+
+        /* Animation for falling confetti */
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Emoji for kisses */
+        .kiss {
+            position: absolute;
+            font-size: 2rem;
+            animation: kissAnimation 2s ease-in-out infinite;
+            z-index: 10000;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+        }
+
+        @keyframes kissAnimation {
+            0% { opacity: 1; transform: translateY(-30px); }
+            50% { opacity: 0.5; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(-30px); }
+        }
+
+        /* Sensuous words floating animation */
+        .sensuous-word {
+            position: absolute;
+            font-size: 2rem;
+            font-weight: bold;
+            animation: sensuousWords 8s linear infinite;
+            text-transform: capitalize;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6)); /* Add glow for impact */
+        }
+
+        @keyframes sensuousWords {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-120vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Days to Go for My Favourite Aja's Birthday!</h1>
+        <div class="countdown"> <span id="countdown-timer"></span></div>
+    </div>
+
+    <script>
+     
+const countdownElement = document.getElementById('countdown-timer');
+const targetDate = new Date('2024-11-27T00:00:00'); // Set target date to November 27, 2024
+
+function updateCountdown() {
+    const now = new Date();
+    const timeDifference = targetDate - now;
+
+    // Check if it's the birthday
+    if (timeDifference <= 0) {
+        document.querySelector('h1').textContent = "Happy Birthday Aja!";
+        countdownElement.textContent = "🎉🎂🎈 Celebrate! 🎈🎂🎉";
+        return; // Stop updating the countdown
+    }
+
+    // Calculate days, hours, minutes, and seconds
+    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+    // Update the countdown element
+    countdownElement.innerHTML = `Time Left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+    // Repeat every second
+    setTimeout(updateCountdown, 1000);
+}
+
+// Call the countdown update function
+updateCountdown();
+
+
+
+        // Emoji confetti setup (including kisses)
+        const emojis = ['👠', '🦮', '🔗', '💋', '💄', '🥂'];
+        const container = document.body;
+
+        function createConfetti() {
+            const emoji = document.createElement('div');
+            emoji.classList.add('confetti');
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            // Random start position
+            emoji.style.left = Math.random() * 100 + 'vw';
+            emoji.style.animationDuration = Math.random() * 3 + 5 + 's';
+            
+            container.appendChild(emoji);
+
+            // Remove the emoji after animation ends
+            setTimeout(() => {
+                emoji.remove();
+            }, 8000);
+        }
+
+        // Create multiple confetti at random intervals
+        setInterval(createConfetti, 300);
+
+        // Kiss animation (loving kisses that float upwards)
+        function createKisses() {
+            const kiss = document.createElement('div');
+            kiss.classList.add('kiss');
+            kiss.textContent = '💋';
+
+            kiss.style.left = Math.random() * 100 + 'vw';
+            kiss.style.top = Math.random() * 100 + 'vh';
+
+            container.appendChild(kiss);
+
+            // Remove the kiss after animation ends
+            setTimeout(() => {
+                kiss.remove();
+            }, 3000);
+        }
+
+        // Create kisses at random intervals
+        setInterval(createKisses, 200);
+
+        // Sensuous words animation
+        const sensuousWords = [
+            "You Belong to Me", "Surrender to Me", "My Sweet Submissive", 
+            "Trust in Me", "Kiss Me", "You are Mine", "Give Yourself to Me", 
+            "Let Go, Darling", "My Beautiful Sub", "Forever Yours"
+        ];
+
+        function createSensuousWords() {
+            const word = document.createElement('div');
+            word.classList.add('sensuous-word');
+            word.textContent = sensuousWords[Math.floor(Math.random() * sensuousWords.length)];
+            
+            // Random starting position
+            word.style.left = Math.random() * 100 + 'vw';
+            word.style.top = Math.random() * 100 + 'vh';
+            word.style.color = getRandomColor(); // Apply random color
+
+            container.appendChild(word);
+
+            // Remove the word after animation ends
+            setTimeout(() => {
+                word.remove();
+            }, 8000);
+        }
+
+        // Create sensuous words at random intervals
+        setInterval(createSensuousWords, 800);
+
+        // Function to get a random color with 4D effect and psychological impact
+        function getRandomColor() {
+            const colors = [
+                '#00FFC6', // Teal: Refreshing, futuristic
+                '#E82A7C', // Magenta: Energetic, stimulating
+                '#FFD700', // Gold: Luxurious, valuable
+                '#6D83F2', // Blue-Violet: Sophisticated, stable
+                '#3CF5E8'  // Aqua: Cool, calming
+            ];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
     </script>
 </body>
 </html>
