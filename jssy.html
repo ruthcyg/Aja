@@ -1,12 +1,9 @@
-
-
-
-<!DOCTYPE html>
+<!--DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown to My Favourite Aja's Birthday</title>
+    <title>5 Days to Go for My Favourite Aja</title>
     <style>
         /* Reset basic styles */
         body, html {
@@ -15,17 +12,8 @@
             font-family: 'Arial', sans-serif;
             box-sizing: border-box;
             overflow: hidden;
-            background: linear-gradient(135deg, #6D83F2, #E82A7C, #3CF5E8, #FFD700); /* Gradient background with futuristic colors */
-            background-size: 300% 300%; /* Create smooth movement effect */
-            animation: gradientBackground 15s ease infinite; /* Smooth gradient transition */
-            color: #FFFFFF; /* White text to contrast with vibrant backgrounds */
-        }
-
-        /* Keyframe for animated background */
-        @keyframes gradientBackground {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            background: linear-gradient(to right, #FF80AB, #FF4081); /* Vibrant pink gradient */
+            color: #FFFFFF; /* White text to stand out */
         }
 
         /* Main container */
@@ -43,25 +31,14 @@
             font-size: 4rem;
             margin: 0;
             line-height: 1.2;
-            animation: colorChange 10s ease-in-out infinite; /* Apply color-changing animation */
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Soft glow effect */
-        }
-
-        /* Animation for color change */
-        @keyframes colorChange {
-            0% { color: #FFD700; } /* Gold */
-            20% { color: #E82A7C; } /* Magenta */
-            40% { color: #00FFC6; } /* Teal */
-            60% { color: #6D83F2; } /* Blue-Violet */
-            80% { color: #3CF5E8; } /* Aqua */
-            100% { color: #FFD700; } /* Back to Gold */
+            color: #FFEB3B; /* Bright yellow for high energy */
+            animation: bounceIn 1s ease-in-out;
         }
 
         .countdown {
             font-size: 2.5rem;
             margin: 20px 0;
             color: #FFF;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
 
         /* Animation for bouncing header */
@@ -78,7 +55,6 @@
             pointer-events: none;
             animation: fall 5s linear infinite;
             z-index: 9999;
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); /* Add a sleek glow to emojis */
         }
 
         /* Animation for falling confetti */
@@ -93,7 +69,6 @@
             font-size: 2rem;
             animation: kissAnimation 2s ease-in-out infinite;
             z-index: 10000;
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
         }
 
         @keyframes kissAnimation {
@@ -106,10 +81,10 @@
         .sensuous-word {
             position: absolute;
             font-size: 2rem;
+            color: #FFEB3B; /* Yellow for emotional warmth */
             font-weight: bold;
             animation: sensuousWords 8s linear infinite;
             text-transform: capitalize;
-            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6)); /* Add glow for impact */
         }
 
         @keyframes sensuousWords {
@@ -127,46 +102,38 @@
 </head>
 <body>
     <div class="container">
-        <h1>Days to Go for My Favourite Aja's Birthday!</h1>
-        <div class="countdown"> <span id="countdown-timer"></span></div>
+        <h1>Days to Go for My Favourite Aja of All Time Birthday!</h1>
+        <div class="countdown">Time Left: <span id="countdown-timer"></span></div>
     </div>
 
     <script>
-     
-const countdownElement = document.getElementById('countdown-timer');
-const targetDate = new Date('2024-11-27T00:00:00'); // Set target date to November 27, 2024
+        // Countdown Timer
+        const countdownElement = document.getElementById('countdown-timer');
+        const targetDate = new Date(); // Set target date (4 days from now)
+        targetDate.setDate(targetDate.getDate() + 4);
 
-function updateCountdown() {
-    const now = new Date();
-    const timeDifference = targetDate - now;
+        function updateCountdown() {
+            const now = new Date();
+            const timeDifference = targetDate - now;
+            
+            // Calculate days, hours, minutes, and seconds
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-    // Check if it's the birthday
-    if (timeDifference <= 0) {
-        document.querySelector('h1').textContent = "Happy Birthday Aja!";
-        countdownElement.textContent = "🎉🎂🎈 Celebrate! 🎈🎂🎉";
-        return; // Stop updating the countdown
-    }
+            // Update the countdown element
+            countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
-    // Calculate days, hours, minutes, and seconds
-    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+            // Repeat every second
+            setTimeout(updateCountdown, 1000);
+        }
 
-    // Update the countdown element
-    countdownElement.innerHTML = `Time Left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-    // Repeat every second
-    setTimeout(updateCountdown, 1000);
-}
-
-// Call the countdown update function
-updateCountdown();
-
-
+        // Call the countdown update function
+        updateCountdown();
 
         // Emoji confetti setup (including kisses)
-        const emojis = ['👠', '🦮', '🔗', '🎂','🎈', '💋','💄', '🥂','🎉'];
+        const emojis = ['👠', '🦮', '🔗', '💋', '💄', '🥂']; // High Heel, Dog, Leash, Kiss, Lipstick, Cheers emojis
         const container = document.body;
 
         function createConfetti() {
@@ -176,7 +143,7 @@ updateCountdown();
             
             // Random start position
             emoji.style.left = Math.random() * 100 + 'vw';
-            emoji.style.animationDuration = Math.random() * 3 + 5 + 's';
+            emoji.style.animationDuration = Math.random() * 3 + 5 + 's'; // Random fall duration
             
             container.appendChild(emoji);
 
@@ -193,10 +160,10 @@ updateCountdown();
         function createKisses() {
             const kiss = document.createElement('div');
             kiss.classList.add('kiss');
-            kiss.textContent = '💋', '🎂';
+            kiss.textContent = '💋';
 
-            kiss.style.left = Math.random() * 100 + 'vw';
-            kiss.style.top = Math.random() * 100 + 'vh';
+            kiss.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+            kiss.style.top = Math.random() * 100 + 'vh'; // Random vertical position
 
             container.appendChild(kiss);
 
@@ -209,7 +176,7 @@ updateCountdown();
         // Create kisses at random intervals
         setInterval(createKisses, 200);
 
-        // Sensuous words animation
+        // Sensuous words animation (psychologically impactful)
         const sensuousWords = [
             "You Belong to Me", "Surrender to Me", "My Sweet Submissive", 
             "Trust in Me", "Kiss Me", "You are Mine", "Give Yourself to Me", 
@@ -224,7 +191,6 @@ updateCountdown();
             // Random starting position
             word.style.left = Math.random() * 100 + 'vw';
             word.style.top = Math.random() * 100 + 'vh';
-            word.style.color = getRandomColor(); // Apply random color
 
             container.appendChild(word);
 
@@ -236,18 +202,6 @@ updateCountdown();
 
         // Create sensuous words at random intervals
         setInterval(createSensuousWords, 800);
-
-        // Function to get a random color with 4D effect and psychological impact
-        function getRandomColor() {
-            const colors = [
-                '#00FFC6', // Teal: Refreshing, futuristic
-                '#E82A7C', // Magenta: Energetic, stimulating
-                '#FFD700', // Gold: Luxurious, valuable
-                '#6D83F2', // Blue-Violet: Sophisticated, stable
-                '#3CF5E8'  // Aqua: Cool, calming
-            ];
-            return colors[Math.floor(Math.random() * colors.length)];
-        }
     </script>
 </body>
-</html>
+</html>-->
